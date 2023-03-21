@@ -5,7 +5,7 @@ metadata:
   name: reddit-clone-deployment
 spec:
   replicas: 3
-  selectors:
+  selector:
     matchLabels:
       app: redditclone
   template:
@@ -18,7 +18,7 @@ spec:
         - name: reddit-clone-container
           image: javeedit/redditclone
           ports:
-          - containersPort: 3000
+          - containerPort: 3000
 ---
 apiVersion: v1
 kind: Service
@@ -26,7 +26,7 @@ metadata:
   name: reddit-clone-svc
 spec: 
   type: NodePort
-  selectors:
+  selector:
     app: redditclone
   ports:
     - port: 3000
