@@ -19,4 +19,17 @@ spec:
           image: javeedit/redditclone
           ports:
           - containersPort: 3000
+---
+apiVersion: v1
+Kind: Service
+metadata: 
+  name: reddit-clone-svc
+spec: 
+  type: NodePort
+  selectors:
+    app: redditclone
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 30001
 ...
